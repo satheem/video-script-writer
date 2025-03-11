@@ -10,7 +10,7 @@ import {
   CircularProgress,
   Alert
 } from '@mui/material';
-import Footer from './Footer'; // Import Footer Component
+import Footer from './Footer'; 
 
 function App() {
   const [topic, setTopic] = useState('');
@@ -119,7 +119,7 @@ function App() {
           </form>
         </Paper>
 
-        {/* Display the Generated Script with Markdown Formatting */}
+        {}
         {script && (
           <Paper elevation={3} sx={{ p: 3 }}>
             <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
@@ -132,7 +132,7 @@ function App() {
         )}
       </Container>
 
-      <Footer /> {/* Footer added here */}
+      <Footer /> {}
     </>
   );
 }

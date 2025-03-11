@@ -15,7 +15,7 @@ const Footer = () => {
       <Typography variant="body2">
         Developed by{" "}
         <Link 
-          href="https://github.com/satheem" // Replace with your actual link
+          href="https://github.com/satheem"
           target="_blank" 
           rel="noopener noreferrer"
           sx={{ fontWeight: "bold", color: "primary.main", textDecoration: "none" }}
