@@ -15,7 +15,7 @@ const Footer = () => {
       <Typography variant="body2">
         Developed by{" "}
         <Link 
-          href="https://github.com/satheem"
+          href="https://www.instagram.com/iamsatheem/"
           target="_blank" 
           rel="noopener noreferrer"
           sx={{ fontWeight: "bold", color: "primary.main", textDecoration: "none" }}
