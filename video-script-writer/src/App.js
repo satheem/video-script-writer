@@ -29,7 +29,7 @@ function App() {
     setError('');
     
     try {
-      const response = await fetch('http://video-script-writer-production.up.railway.app/generate-script', {
+      const response = await fetch('http://video-script-writer-production.up.railway.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, videoType }),
