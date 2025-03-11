@@ -10,6 +10,7 @@ import {
   CircularProgress,
   Alert
 } from '@mui/material';
+import Footer from './Footer'; // Import Footer Component
 
 function App() {
   const [topic, setTopic] = useState('');
@@ -51,84 +52,88 @@ function App() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography 
-        variant="h3" 
-        component="h1" 
-        gutterBottom 
-        sx={{ 
-          fontWeight: 'bold',
-          textAlign: 'center',
-          color: 'primary.main',
-          mb: 4
-        }}
-      >
-        AI Script Writer
-      </Typography>
+    <>
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Typography 
+          variant="h3" 
+          component="h1" 
+          gutterBottom 
+          sx={{ 
+            fontWeight: 'bold',
+            textAlign: 'center',
+            color: 'primary.main',
+            mb: 4
+          }}
+        >
+          AI Script Writer
+        </Typography>
 
-      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            label="Video Topic"
-            variant="outlined"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            margin="normal"
-            required
-          />
+        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              fullWidth
+              label="Video Topic"
+              variant="outlined"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              margin="normal"
+              required
+            />
 
-          <TextField
-            fullWidth
-            label="Video Type"
-            variant="outlined"
-            value={videoType}
-            onChange={(e) => setVideoType(e.target.value)}
-            margin="normal"
-            select
-            SelectProps={{ native: true }}
-          >
-            <option value="YouTube Video">YouTube Video</option>
-            <option value="TikTok Short">TikTok Short</option>
-            <option value="Instagram Reel">Instagram Reel</option>
-            <option value="Corporate Video">Corporate Video</option>
-          </TextField>
+            <TextField
+              fullWidth
+              label="Video Type"
+              variant="outlined"
+              value={videoType}
+              onChange={(e) => setVideoType(e.target.value)}
+              margin="normal"
+              select
+              SelectProps={{ native: true }}
+            >
+              <option value="YouTube Video">YouTube Video</option>
+              <option value="TikTok Short">TikTok Short</option>
+              <option value="Instagram Reel">Instagram Reel</option>
+              <option value="Corporate Video">Corporate Video</option>
+            </TextField>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            size="large"
-            disabled={loading}
-            sx={{ mt: 2 }}
-          >
-            {loading ? (
-              <CircularProgress size={24} color="inherit" />
-            ) : (
-              'Generate Script'
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              size="large"
+              disabled={loading}
+              sx={{ mt: 2 }}
+            >
+              {loading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                'Generate Script'
+              )}
+            </Button>
+
+            {error && (
+              <Alert severity="error" sx={{ mt: 2 }}>
+                {error}
+              </Alert>
             )}
-          </Button>
-
-          {error && (
-            <Alert severity="error" sx={{ mt: 2 }}>
-              {error}
-            </Alert>
-          )}
-        </form>
-      </Paper>
-
-      {/* Display the Generated Script with Markdown Formatting */}
-      {script && (
-        <Paper elevation={3} sx={{ p: 3 }}>
-          <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
-            Generated Script:
-          </Typography>
-          <Box sx={{ whiteSpace: 'pre-wrap' }}>
-            <ReactMarkdown>{script}</ReactMarkdown>
-          </Box>
+          </form>
         </Paper>
-      )}
-    </Container>
+
+        {/* Display the Generated Script with Markdown Formatting */}
+        {script && (
+          <Paper elevation={3} sx={{ p: 3 }}>
+            <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
+              Generated Script:
+            </Typography>
+            <Box sx={{ whiteSpace: 'pre-wrap' }}>
+              <ReactMarkdown>{script}</ReactMarkdown>
+            </Box>
+          </Paper>
+        )}
+      </Container>
+
+      <Footer /> {/* Footer added here */}
+    </>
   );
 }
 
